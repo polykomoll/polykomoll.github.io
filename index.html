@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="清新二手房网提供真实、透明的二手房房源信息，涵盖新房、二手房、租房、商铺及小区资讯。支持在线看房、VR全景展示，致力于打造最值得信赖的本地房产交易服务平台。">
+    <meta name="keywords" content="清新二手房网,清新二手房,清新房产,清新租房,清新新房,清新小区">
+    <title>清新二手房网-本地真实房源与房产交易服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2eb7b0; /* 清新蓝绿色 */
+            --primary-dark: #26968f;
+            --secondary-color: #f0f8f7;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --bg-body: #f9fbfb;
+            --bg-white: #ffffff;
+            --border-color: #e5e5e5;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            padding: 8px 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: var(--radius);
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            border-radius: var(--radius);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* 搜索区域 */
+        .search-section {
+            background: linear-gradient(135deg, #2eb7b0 0%, #4fc3f7 100%);
+            padding: 40px 0;
+            color: white;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            box-shadow: var(--shadow-md);
+            flex-wrap: wrap;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-btn {
+            align-self: flex-end;
+            height: 42px;
+            padding: 0 30px;
+            font-size: 16px;
+        }
+
+        /* 分类导航 */
+        .category-nav {
+            background: var(--bg-white);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .category-item:hover, .category-item.active {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .category-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* 热门推荐 */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -17px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .section-more:hover {
+            color: var(--primary-color);
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .property-card {
+            background: var(--bg-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary-color);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+
+        .card-price span {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-info {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .card-info-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-features {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .feature-tag {
+            background-color: var(--secondary-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* 重点推荐 Banner */
+        .highlight-banner {
+            background-color: var(--secondary-color);
+            border-radius: var(--radius);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .highlight-content {
+            flex: 1;
+        }
+
+        .highlight-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .highlight-desc {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .highlight-image {
+            flex: 1;
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        
+        .highlight-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 城市数据 */
+        .city-stats {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links, .user-actions .btn-outline {
+                display: none;
+            }
+            
+            .nav-wrapper {
+                justify-content: center;
+            }
+
+            .highlight-banner {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#2eb7b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 22V12H15V22" stroke="#2eb7b0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>清新二手房网</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">二手房</a>
+                <a href="#">新房</a>
+                <a href="#">租房</a>
+                <a href="#">商铺</a>
+                <a href="#">小区资讯</a>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="btn-outline">登录</a>
+                <a href="#" class="btn-primary">免费发布</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 搜索区域 -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <div class="input-group">
+                    <label>所在城市</label>
+                    <select>
+                        <option>清新区</option>
+                        <option>清城区</option>
+                        <option>飞来峡镇</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>房源区域</label>
+                    <input type="text" placeholder="例如：清新大道、太和镇...">
+                </div>
+                <div class="input-group">
+                    <label>房源类型</label>
+                    <select>
+                        <option>全部类型</option>
+                        <option>普通住宅</option>
+                        <option>别墅</option>
+                        <option>公寓</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>价格区间</label>
+                    <select>
+                        <option>不限</option>
+                        <option>50万以下</option>
+                        <option>50-80万</option>
+                        <option>80-120万</option>
+                        <option>120万以上</option>
+                    </select>
+                </div>
+                <button class="btn-primary search-btn">搜索房源</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分类导航 -->
+    <div class="container">
+        <div class="category-nav">
+            <ul class="category-list">
+                <li class="category-item active">
+                    <svg class="category-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>全部房源</span>
+                </li>
+                <li class="category-item">
+                    <svg class="category-icon" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4 8 4v14M8 21v-2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    <span>高性价比</span>
+                </li>
+                <li class="category-item">
+                    <svg class="category-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    <span>急售急租</span>
+                </li>
+                <li class="category-item">
+                    <svg class="category-icon" viewBox="0 0 24 24"><path d="M12 2.69l5.74 5.88-5.74 5.88-5.74-5.88z"></path><path d="M12 22.31V2.69"></path></svg>
+                    <span>学区房</span>
+                </li>
+                <li class="category-item">
+                    <svg class="category-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span>个人房东</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 首页推荐 -->
+    <main class="container">
+        
+        <!-- 焦点推荐 -->
+        <section class="highlight-banner">
+            <div class="highlight-content">
+                <h2 class="highlight-title">清新核心区·品质现房</h2>
+                <p class="highlight-desc">位于清新区核心地段，交通便利，周边配套成熟。小区环境优美，绿化率高，是清新二手房市场的优选之选。</p>
+                <a href="#" class="btn-primary">查看详情</a>
+            </div>
+            <div class="highlight-image">
+                <img src="https://picsum.photos/seed/house1/600/400" alt="清新优质二手房">
+            </div>
+        </section>
+
+        <!-- 热门房源 -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">热门房源推荐</h2>
+                <a href="#" class="section-more">查看更多 ></a>
+            </div>
+            
+            <div class="property-grid">
+                <!-- 卡片 1 -->
+                <article class="property-card">
+                    <div class="card-image">
+                        <span class="card-badge">急售</span>
+                        <img src="https://picsum.photos/seed/house2/400/300" alt="清新二手房房源">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-price">128万 <span>元/套</span></div>
+                        <h3 class="card-title">清新大道旁两房一厅 精装急售</h3>
+                        <div class="card-info">
+                            <span class="card-info-item">🏠 62㎡</span>
+                            <span class="card-info-item">🚇 1.2km</span>
+                            <span class="card-info-item">⭐ 9.2分</span>
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-tag">近地铁</span>
+                            <span class="feature-tag">满五唯一</span>
+                            <span class="feature-tag">随时看房</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 卡片 2 -->
+                <article class="property-card">
+                    <div class="card-image">
+                        <span class="card-badge">推荐</span>
+                        <img src="https://picsum.photos/seed/house3/400/300" alt="清新二手房房源">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-price">185万 <span>元/套</span></div>
+                        <h3 class="card-title">清新三水交界处三居室 精装拎包入住</h3>
+                        <div class="card-info">
+                            <span class="card-info-item">🏠 98㎡</span>
+                            <span class="card-info-item">🚗 500m</span>
+                            <span class="card-info-item">⭐ 9.5分</span>
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-tag">南北通透</span>
+                            <span class="feature-tag">学区房</span>
+                            <span class="feature-tag">视野好</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 卡片 3 -->
+                <article class="property-card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/house4/400/300" alt="清新二手房房源">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-price">95万 <span>元/套</span></div>
+                        <h3 class="card-title">清新城北小户型出租出售</h3>
+                        <div class="card-info">
+                            <span class="card-info-item">🏠 45㎡</span>
+                            <span class="card-info-item">🚇 800m</span>
+                            <span class="card-info-item">⭐ 8.8分</span>
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-tag">精装修</span>
+                            <span class="feature-tag">低楼层</span>
+                            <span class="feature-tag">随时看房</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 卡片 4 -->
+                <article class="property-card">
+                    <div class="card-image">
+                        <span class="card-badge">新上</span>
+                        <img src="https://picsum.photos/seed/house5/400/300" alt="清新二手房房源">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-price">210万 <span>元/套</span></div>
+                        <h3 class="card-title">清新碧桂园附近大平层</h3>
+                        <div class="card-info">
+                            <span class="card-info-item">🏠 120㎡</span>
+                            <span class="card-info-item">🚗 1km</span>
+                            <span class="card-info-item">⭐ 9.6分</span>
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-tag">大阳台</span>
+                            <span class="feature-tag">品牌物业</span>
+                            <span class="feature-tag">小区好</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 城市数据 -->
+        <section class="city-stats">
+            <div class="section-header" style="border:none; padding-bottom:0; margin-bottom:20px;">
+                <h2 class="section-title">清新楼市动态</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>1,240</h3>
+                    <p>本月在售房源</p>
+                </div>
+                <div class="stat-item">
+                    <h3>89</h3>
+                    <p>今日新增</p>
+                </div>
+                <div class="stat-item">
+                    <h3>12,500</h3>
+                    <p>本月成交量</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8,900</h3>
+                    <p>本月成交均价(元/㎡)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">购房指南与常见问题</h2>
+            </div>
+            
+            <div class="faq-item active" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    在清新二手房网买房需要支付哪些费用？
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="faq-answer">
+                    除了房屋本身的交易价格外，通常还需要支付契税（首套房1%-1.5%，二套房1%-3%）、维修基金、中介服务费（如通过平台或中介）以及可能的交易手续费等。具体金额根据房屋面积、购买套数及政策而定。
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    如何确保清新二手房网上的房源信息真实有效？
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="faq-answer">
+                    我们对发布的房源进行严格审核，包括产权核验和业主身份认证。您可以通过平台的“在线看房”功能预约实地考察，或联系客服进行核实。对于标注为“个人房源”的信息，我们会优先推荐。
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    如果发现房源与描述不符怎么办？
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="faq-answer">
+                    请您在实地看房时仔细核对房屋状况、面积和配套设施。如有严重不符，您可以在APP内提交投诉，我们会介入核实并处理。同时，建议您在交易前务必进行专业的房屋查验。
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>清新二手房网</h2>
+                    <p>专注清新本地房产信息服务，为您提供最真实、最全面的二手房房源。我们致力于成为清新市民信赖的房产交易桥梁。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">网站地图</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>业务支持</h4>
+                    <ul>
+                        <li><a href="#">发布房源</a></li>
+                        <li><a href="#">购房流程</a></li>
+                        <li><a href="#">贷款计算</a></li>
+                        <li><a href="#">联系客服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>电话：0758-1234567</li>
+                        <li>邮箱：service@qinxin.com</li>
+                        <li>地址：广东省清新区XX路XX号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 清新二手房网 版权所有 | 粤ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 切换逻辑
+        function toggleFaq(element) {
+            // 关闭其他所有打开的 FAQ
+            const allFaqs = document.querySelectorAll('.faq-item');
+            allFaqs.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            // 切换当前 FAQ
+            element.classList.toggle('active');
+        }
+
+        // 简单的分类导航切换效果（视觉反馈）
+        const categoryItems = document.querySelectorAll('.category-item');
+        categoryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                categoryItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+  </html>
