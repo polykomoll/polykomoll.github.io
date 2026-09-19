@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="你好我的爱电影 - 汇集经典爱情电影、浪漫剧情片及高分爱情故事推荐。提供电影简介、剧情解析、角色分析和观影指南，助你找到触动心灵的爱情佳作。">
+    <meta name="keywords" content="你好我的爱电影, 爱情电影推荐, 浪漫剧情片, 经典爱情电影, 电影解析">
+    <title>你好我的爱电影-经典浪漫爱情片推荐与观影指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --primary-dark: #c2185b;
+            --secondary-color: #f8bbd0;
+            --bg-color: #fdf6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(233, 30, 99, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f1f1;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 5px;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .hero-bg-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            background-image: url('https://picsum.photos/seed/romancefilm/800/800'); /* Placeholder for visual */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            mask-image: linear-gradient(to left, black, transparent);
+            -webkit-mask-image: linear-gradient(to left, black, transparent);
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-tag {
+            padding: 8px 20px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .cat-tag:hover, .cat-tag.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Section Title */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+
+        .movie-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.15);
+        }
+
+        .poster-wrapper {
+            position: relative;
+            padding-top: 150%; /* Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .poster-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .movie-card:hover .poster-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .rating-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffd700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .tag {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .featured-poster {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .featured-info h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .featured-info .meta {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .featured-info p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .feature-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .feature-tag {
+            padding: 5px 12px;
+            background: #fce4ec;
+            color: var(--primary-dark);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Article / Guide */
+        .guide-section {
+            margin-bottom: 3rem;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .guide-card {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .guide-card:hover {
+            background: #fff0f5;
+        }
+
+        .guide-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .guide-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ddd;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                height: auto;
+                padding: 40px 0;
+            }
+
+            .hero-bg-image {
+                display: none;
+            }
+
+            .hero-content {
+                margin: 0 20px;
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .featured-section {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav-wrapper">
+        <div class="logo">
+            <span>你好</span>我的爱电影
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">电影列表</a></li>
+                <li><a href="#">分类</a></li>
+                <li><a href="#">影评</a></li>
+                <li><a href="#">榜单</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="搜索电影...">
+            <button>🔍</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-content">
+            <h1>在光影中重温爱的感动</h1>
+            <p>精选全球高分爱情电影，从经典老片到现代佳作。在这里，每一帧画面都藏着关于爱的故事，每一次观看都是一次心灵的洗礼。</p>
+            <button class="btn">开始观影</button>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="cat-tag active">全部</div>
+        <div class="cat-tag">浪漫爱情</div>
+        <div class="cat-tag">虐心催泪</div>
+        <div class="cat-tag">喜剧爱情</div>
+        <div class="cat-tag">奇幻浪漫</div>
+        <div class="cat-tag">青春校园</div>
+        <div class="cat-tag">历史爱情</div>
+        <div class="cat-tag">文艺片</div>
+    </section>
+
+    <!-- Featured Movie -->
+    <section class="featured-section">
+        <img src="https://picsum.photos/seed/lovefilm2/600/800" alt="Featured Movie Poster" class="featured-poster">
+        <div class="featured-info">
+            <div class="tag" style="margin-bottom: 10px;">本周推荐</div>
+            <h2>爱在日落黄昏时</h2>
+            <div class="meta">
+                <span>2023</span>
+                <span>法国 / 美国</span>
+                <span>1h 40m</span>
+                <span>爱情 / 剧情</span>
+            </div>
+            <div class="feature-tags">
+                <span class="feature-tag">经典</span>
+                <span class="feature-tag">对白</span>
+                <span class="feature-tag">治愈</span>
+            </div>
+            <p>《爱在日落黄昏时》是“爱在”三部曲的第二部。讲述了九年后的杰西和席琳在巴黎的重逢。故事没有跌宕起伏的情节，只有两个人在咖啡馆、在河畔边漫步时的漫谈。这部电影完美诠释了现代爱情中的尴尬、怀念与重燃，是许多影迷心中的爱情圣经。</p>
+            <button class="btn">查看详情</button>
+        </div>
+    </section>
+
+    <!-- Popular Movies -->
+    <section class="popular-movies">
+        <div class="section-header">
+            <h2 class="section-title">热门推荐</h2>
+            <a href="#" class="view-all">查看更多 &rarr;</a>
+        </div>
+        <div class="movie-grid">
+            <!-- Movie Card 1 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/mov1/300/450" alt="Movie Poster">
+                    <div class="rating-badge">9.2</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">泰坦尼克号</h3>
+                    <div class="card-meta">
+                        <span class="tag">爱情</span>
+                        <span>1997</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie Card 2 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/mov2/300/450" alt="Movie Poster">
+                    <div class="rating-badge">8.8</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">爱乐之城</h3>
+                    <div class="card-meta">
+                        <span class="tag">歌舞</span>
+                        <span>2016</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie Card 3 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/mov3/300/450" alt="Movie Poster">
+                    <div class="rating-badge">9.0</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">时空恋旅人</h3>
+                    <div class="card-meta">
+                        <span class="tag">奇幻</span>
+                        <span>2013</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie Card 4 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/mov4/300/450" alt="Movie Poster">
+                    <div class="rating-badge">8.5</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">怦然心动</h3>
+                    <div class="card-meta">
+                        <span class="tag">青春</span>
+                        <span>2010</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie Card 5 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/mov5/300/450" alt="Movie Poster">
+                    <div class="rating-badge">8.9</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">爱在黎明破晓前</h3>
+                    <div class="card-meta">
+                        <span class="tag">爱情</span>
+                        <span>1995</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Movie Card 6 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/mov6/300/450" alt="Movie Poster">
+                    <div class="rating-badge">8.7</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">爱在午夜降临前</h3>
+                    <div class="card-meta">
+                        <span class="tag">爱情</span>
+                        <span>2013</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section class="guide-section">
+        <div class="section-header">
+            <h2 class="section-title">观影指南</h2>
+        </div>
+        <div class="guide-grid">
+            <div class="guide-card">
+                <h3>如何选择适合你的爱情电影？</h3>
+                <p>根据你的心情选择类型。想要轻松愉悦，首选喜剧爱情；想要深刻思考，推荐文艺片或历史爱情片。</p>
+            </div>
+            <div class="guide-card">
+                <h3>经典三部曲推荐</h3>
+                <p>从《爱在》系列到《哈利·波特》的爱情线，了解那些经得起时间考验的爱情故事结构。</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于你好我的爱电影</h4>
+                <p style="color: #bbb; font-size: 0.9rem; line-height: 1.8;">
+                    致力于为影迷提供最优质的爱情电影资源与深度解析。在这里，我们相信每一部电影都有它独特的温度。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>浏览分类</h4>
+                <ul>
+                    <li><a href="#">国产爱情片</a></li>
+                    <li><a href="#">好莱坞爱情</a></li>
+                    <li><a href="#">韩日爱情剧</a></li>
+                    <li><a href="#">欧洲文艺片</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">网站地图</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 你好我的爱电影. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 简单的交互逻辑：分类切换
+    document.querySelectorAll('.cat-tag').forEach(tag => {
+        tag.addEventListener('click', function() {
+            document.querySelectorAll('.cat-tag').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            // 这里可以添加筛选逻辑，目前仅做视觉演示
+        });
+    });
+
+    // 搜索框回车事件
+    const searchInput = document.querySelector('.search-box input');
+    searchInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            alert('正在搜索：' + this.value);
+        }
+    });
+</script>
+
+</body>
+</html>
