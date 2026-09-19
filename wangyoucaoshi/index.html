@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="忘忧草视频专注于提供高清、流畅的在线视频观看体验，涵盖影视、综艺、纪录片及生活美学内容。支持多终端同步，打造您的专属娱乐空间。">
+    <meta name="keywords" content="忘忧草视频,高清视频,在线观看,影视资源,视频流媒体">
+    <title>忘忧草视频-高清影视在线观看与流媒体平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e60012;
+            --secondary-color: #1a1a1a;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-body: #f5f5f7;
+            --bg-card: #ffffff;
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            display: none;
+        }
+
+        .search-box input {
+            padding: 8px 35px 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            outline: none;
+            width: 200px;
+            transition: width 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-color);
+            width: 240px;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .btn-login {
+            padding: 8px 20px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/moviehero/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background-color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #cc0010;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 3rem 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cat-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .cat-name {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* Video Grid */
+        .content-section {
+            padding: 3rem 0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .video-thumb {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .video-thumb img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .play-icon::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+
+        .video-card:hover .play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .video-info {
+            padding: 1rem;
+        }
+
+        .video-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .video-tag {
+            color: var(--primary-color);
+        }
+
+        /* Features */
+        .features {
+            background-color: white;
+            padding: 4rem 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #fff0f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-item h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #999;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .search-box {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .nav-menu {
+                display: none; /* In a real app, this would be a hamburger menu */
+            }
+            .header-inner {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">忘忧草<span>视频</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">电影</a></li>
+                    <li><a href="#">电视剧</a></li>
+                    <li><a href="#">综艺</a></li>
+                    <li><a href="#">纪录片</a></li>
+                    <li><a href="#">动漫</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索电影、剧集...">
+                    <button>&#128269;</button>
+                </div>
+                <a href="#" class="btn-login">登录</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tag">今日推荐</span>
+                    <h1>探索光影世界，治愈你的每一次疲惫</h1>
+                    <p>忘忧草视频汇聚全球优质影视资源，提供高清流畅的在线播放体验。无论是经典老片还是最新热映，这里应有尽有。</p>
+                    <div class="hero-btns">
+                        <button class="btn btn-primary">立即观看</button>
+                        <button class="btn btn-secondary">加入片单</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories container">
+            <div class="section-title">
+                <h2>全部分类</h2>
+                <a href="#">查看更多 ></a>
+            </div>
+            <div class="category-grid">
+                <div class="cat-card">
+                    <span class="cat-icon">🎬</span>
+                    <div class="cat-name">动作冒险</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">🧠</span>
+                    <div class="cat-name">悬疑推理</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">❤️</span>
+                    <div class="cat-name">爱情故事</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">🚀</span>
+                    <div class="cat-name">科幻未来</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">😂</span>
+                    <div class="cat-name">喜剧动画</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">🎭</span>
+                    <div class="cat-name">古装历史</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">🏆</span>
+                    <div class="cat-name">体育竞技</div>
+                </div>
+                <div class="cat-card">
+                    <span class="cat-icon">📚</span>
+                    <div class="cat-name">纪录片</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Updates -->
+        <section class="content-section container">
+            <div class="section-title">
+                <h2>最新更新</h2>
+                <a href="#">更多更新 ></a>
+            </div>
+            <div class="video-grid">
+                <!-- Video Card 1 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid1/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">星际穿越：未知的边界</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">科幻</span>
+                            <span>2023-10-24</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 2 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid2/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">城市微光：记录真实生活</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">纪录片</span>
+                            <span>2023-10-24</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 3 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid3/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">深夜食堂：第42集</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">美食</span>
+                            <span>2023-10-23</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 4 -->
+                <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid4/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">极限挑战：荒岛求生</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">综艺</span>
+                            <span>2023-10-23</span>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Video Card 5 -->
+                 <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid5/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">赛博朋克：霓虹之夜</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">动漫</span>
+                            <span>2023-10-22</span>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Video Card 6 -->
+                 <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid6/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">百年孤独：影视版</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">剧情</span>
+                            <span>2023-10-22</span>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Video Card 7 -->
+                 <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid7/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">自然之声：森林交响曲</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">纪录片</span>
+                            <span>2023-10-21</span>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Video Card 8 -->
+                 <article class="video-card">
+                    <div class="video-thumb">
+                        <img src="https://picsum.photos/seed/vid8/400/225" alt="视频封面">
+                        <div class="play-icon"></div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">王牌特工：特训营</h3>
+                        <div class="video-meta">
+                            <span class="video-tag">动作</span>
+                            <span>2023-10-21</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🚀</div>
+                        <h3>极速播放</h3>
+                        <p>采用先进的流媒体技术，支持4K超清画质，加载速度快，告别卡顿。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h3>多端同步</h3>
+                        <p>手机、平板、电脑无缝切换，随时随地开启您的观影之旅。</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔒</div>
+                        <h3>安全纯净</h3>
+                        <p>无广告弹窗，无恶意插件，提供安全、健康的网络环境。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1rem;">忘忧草<span>视频</span></div>
+                    <p style="font-size: 0.9rem; line-height: 1.8;">忘忧草视频致力于为用户提供最优质的在线视频娱乐体验。我们精选全球好片，只为给您带来片刻的放松与快乐。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">播放器设置</a></li>
+                        <li><a href="#">会员服务</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">B站账号</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 忘忧草视频. All Rights Reserved. 本站内容仅供学习交流，请勿用于商业用途。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
