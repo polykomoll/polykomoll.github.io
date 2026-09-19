@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="东方卫视主持人歌会官方资讯页面，提供主持人个人简介、最新歌会活动预告、演出阵容介绍及购票指南。">
+    <meta name="keywords" content="东方卫视主持人歌会,东方卫视,主持人歌会,演出资讯,综艺活动">
+    <title>东方卫视主持人歌会-璀璨星光之夜与舞台风采展示</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #D4AF37; /* 东方卫视金 */
+            --secondary-color: #1a1a1a;
+            --bg-color: #f8f8f8;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background-color: #b5952f;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://picsum.photos/seed/tvstage/1920/1080.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeIn Up 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--secondary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--secondary-color);
+        }
+
+        /* Cast Grid */
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cast-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .cast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cast-img {
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .cast-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cast-card:hover .cast-img img {
+            transform: scale(1.05);
+        }
+
+        .cast-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .cast-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .cast-role {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cast-bio {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Schedule Section */
+        .schedule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-item {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .date-box {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .date-day {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .date-month {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .schedule-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .venue-info {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Highlights / Features */
+        .features {
+            background-color: var(--white);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background-color: var(--white);
+        }
+
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.25rem;
+            color: var(--text-light);
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.25rem;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #ccc;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none; /* Simplified for mobile */
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .schedule-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .date-box {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+                align-items: baseline;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span>东方卫视</span>主持人歌会
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#cast">主持人阵容</a></li>
+                    <li><a href="#schedule">演出日程</a></li>
+                    <li><a href="#highlights">亮点特色</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#schedule" class="cta-button">立即购票</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">2023年度盛典</span>
+            <h1>东方卫视主持人歌会<br>璀璨星光之夜</h1>
+            <p>汇聚东方卫视当家主持力量，为您呈现一场集音乐、综艺与温情于一体的视听盛宴。感受主持人的另一面风采。</p>
+            <div class="hero-buttons">
+                <a href="#schedule" class="btn-primary">查看演出</a>
+                <a href="#cast" class="btn-outline">认识主持人</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section id="highlights" class="section features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">活动亮点</h2>
+                <p class="section-desc">这不仅仅是一场演唱会，更是主持人从荧幕走向舞台的全新尝试。</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🎤</div>
+                    <h3>跨界音乐现场</h3>
+                    <p>多位知名主持人首次尝试独唱及合唱表演，现场演绎流行金曲与经典老歌。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎭</div>
+                    <h3>情景剧式演出</h3>
+                    <p>结合经典综艺环节改编的情景舞台剧，重现荧幕经典瞬间。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎁</div>
+                    <h3>互动福利环节</h3>
+                    <p>现场抽取幸运观众，赠送东方卫视定制周边及全年VIP观影券。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cast Section -->
+    <section id="cast" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">主持人阵容</h2>
+                <p class="section-desc">熟悉的面孔，全新的演绎，为您介绍本次歌会的核心嘉宾。</p>
+            </div>
+            
+            <div class="cast-grid">
+                <!-- Host 1 -->
+                <article class="cast-card">
+                    <div class="cast-img">
+                        <img src="https://picsum.photos/seed/host1/400/500.jpg" alt="主持人李静">
+                    </div>
+                    <div class="cast-info">
+                        <h3 class="cast-name">李静</h3>
+                        <span class="cast-role">当家花旦 / 知性风格</span>
+                        <p class="cast-bio">深耕荧屏多年，以其独特的知性魅力和亲和力著称，本次将带来一首治愈系抒情歌曲。</p>
+                    </div>
+                </article>
+
+                <!-- Host 2 -->
+                <article class="cast-card">
+                    <div class="cast-img">
+                        <img src="https://picsum.photos/seed/host2/400/500.jpg" alt="主持人程雷">
+                    </div>
+                    <div class="cast-info">
+                        <h3 class="cast-name">程雷</h3>
+                        <span class="cast-role">金牌男主持 / 阳光活力</span>
+                        <p class="cast-bio">拥有极具感染力的嗓音，擅长将流行音乐与舞台动感完美融合。</p>
+                    </div>
+                </article>
+
+                <!-- Host 3 -->
+                <article class="cast-card">
+                    <div class="cast-img">
+                        <img src="https://picsum.photos/seed/host3/400/500.jpg" alt="主持人王冠">
+                    </div>
+                    <div class="cast-info">
+                        <h3 class="cast-name">王冠</h3>
+                        <span class="cast-role">综艺新星 / 热情奔放</span>
+                        <p class="cast-bio">舞台表现力极强，将带来一首节奏感十足的流行摇滚曲目。</p>
+                    </div>
+                </article>
+
+                <!-- Host 4 -->
+                <article class="cast-card">
+                    <div class="cast-img">
+                        <img src="https://picsum.photos/seed/host4/400/500.jpg" alt="主持人朱桢">
+                    </div>
+                    <div class="cast-info">
+                        <h3 class="cast-name">朱桢</h3>
+                        <span class="cast-role">人气王 / 幽默多才</span>
+                        <p class="cast-bio">不仅主持功底扎实，更具备优秀的音乐素养，现场将演绎深情慢歌。</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="section" style="background-color: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">演出日程</h2>
+                <p class="section-desc">把握时机，选择最适合您的场次。</p>
+            </div>
+
+            <div class="schedule-list">
+                <div class="schedule-item">
+                    <div class="date-box">
+                        <div class="date-day">15</div>
+                        <div class="date-month">10月</div>
+                    </div>
+                    <div class="schedule-content">
+                        <h3>第一场：经典金曲之夜</h3>
+                        <div class="venue-info">
+                            <span>📍</span> 上海东方艺术中心
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button">查看详情</a>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="date-box">
+                        <div class="date-day">22</div>
+                        <div class="date-month">10月</div>
+                    </div>
+                    <div class="schedule-content">
+                        <h3>第二场：流行盛典之夜</h3>
+                        <div class="venue-info">
+                            <span>📍</span> 梅赛德斯-奔驰文化中心
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button">查看详情</a>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="date-box">
+                        <div class="date-day">05</div>
+                        <div class="date-month">11月</div>
+                    </div>
+                    <div class="schedule-content">
+                        <h3>第三场：温情岁月之夜</h3>
+                        <div class="venue-info">
+                            <span>📍</span> 保利大剧院
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">常见问题</h2>
+                <p class="section-desc">关于购票、观演及演出的相关问题解答。</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">如何购买门票？<span>+</span></div>
+                    <div class="faq-answer">
+                        <p>您可以通过本页面提供的官方购票链接，或前往各大票务平台（如大麦网、猫眼演出）搜索“东方卫视主持人歌会”进行购买。建议提前预订以获取更好位置。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">演出时长是多久？<span>+</span></div>
+                    <div class="faq-answer">
+                        <p>整场演出时长约为 120 分钟，中场休息 15 分钟。请合理安排时间，准时入场。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">儿童可以入场吗？<span>+</span></div>
+                    <div class="faq-answer">
+                        <p>本场演出建议 1.2米以上儿童凭票入场，1.2米以下儿童谢绝入场。具体请以各场次票务规则为准。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">是否支持退票？<span>+</span></div>
+                    <div class="faq-answer">
+                        <p>演出前7天以上可申请全额退款，演出前3-7天申请退款收取20%手续费，演出前3天内不支持退票，请谨慎购买。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>东方卫视主持人歌会</h2>
+                    <p>致力于打造高品质的综艺节目，展现主持人多才多艺的一面，为观众带来欢乐与感动。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#home">回到首页</a></li>
+                        <li><a href="#schedule">演出日程</a></li>
+                        <li><a href="#cast">主持人阵容</a></li>
+                        <li><a href="#faq">购票指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>官方邮箱：contact@easttv.com</li>
+                        <li>客服热线：400-123-4567</li>
+                        <li>办公地址：上海市浦东新区东方卫视大楼</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 东方卫视主持人歌会组委会 版权所有 | 本页面仅为活动资讯展示</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
