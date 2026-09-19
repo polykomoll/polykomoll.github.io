@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仙游二手房网-仙游本地真实房源与购房指南</title>
+    <meta name="description" content="仙游二手房网提供仙游县最新二手房房源信息，包含小区房价走势、房屋出租出售、学区房及商业地产推荐。实时更新，真实在售，助您轻松置业仙游。">
+    <meta name="keywords" content="仙游二手房网,仙游二手房,仙游买房,仙游租房,仙游房产,仙游小区房价">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00a8e8;
+            --accent-color: #ff9800;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --text-light: #999999;
+            --bg-light: #f4f6f9;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--primary-color);
+            color: rgba(255,255,255,0.9);
+            font-size: 12px;
+            padding: 8px 0;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+            margin-left: 5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            background: #f0f2f5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            border: none;
+            padding: 8px 12px;
+            outline: none;
+            width: 200px;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 40px 0 60px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .stats-cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .stat-card .num {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        main {
+            padding-bottom: 60px;
+        }
+
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr 300px;
+            gap: 20px;
+        }
+
+        /* Sidebar Left */
+        .sidebar-left {
+            position: sticky;
+            top: 90px;
+            height: fit-content;
+        }
+
+        .category-menu {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .category-menu h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            color: var(--text-gray);
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .cat-item:hover {
+            color: var(--primary-color);
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: var(--white);
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 6px 15px;
+            border: 1px solid #eee;
+            background: #fff;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* House List */
+        .house-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .house-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+
+        .house-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .house-img {
+            width: 260px;
+            height: 180px;
+            border-radius: 6px;
+            background-color: #ddd;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .house-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .house-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .house-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .house-tags {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .tag.new { background: #e3f2fd; color: #1976d2; }
+        .tag.recommend { background: #fff3e0; color: #f57c00; }
+
+        .house-desc {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .house-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .price-group h4 {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 2px;
+        }
+
+        .price-group .price {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ff4d4f;
+        }
+
+        .price-group .unit {
+            font-size: 14px;
+            color: #ff4d4f;
+        }
+
+        .house-meta {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Sidebar Right */
+        .sidebar-right {
+            position: sticky;
+            top: 90px;
+            height: fit-content;
+        }
+
+        .guide-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .guide-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 12px;
+        }
+
+        .guide-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .guide-list a {
+            font-size: 14px;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        .guide-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .guide-list .sub {
+            font-size: 12px;
+            color: var(--text-light);
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .layout-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left, .sidebar-right {
+                position: static;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .stats-cards {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .house-card {
+                flex-direction: column;
+            }
+            .house-img {
+                width: 100%;
+                height: 200px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <span>服务热线：0594-8888XXXX</span>
+                <span style="margin-left: 20px;">诚信为本 · 服务至上</span>
+            </div>
+        </div>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                仙游二手房网 <span>FX-Fang</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">二手房出售</a>
+                <a href="#">二手房出租</a>
+                <a href="#">小区房价</a>
+                <a href="#">新房楼盘</a>
+                <a href="#">学区查询</a>
+                <a href="#">购房指南</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索仙游小区/房源...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>仙游优质房源，尽在掌握</h1>
+                <p>专注仙游本地二手房市场，为您提供最新房源信息、小区房价走势及专业的购房建议。拒绝虚假房源，只推真实好房。</p>
+            </div>
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="num">3,200+</div>
+                    <div class="label">在售房源</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">85</div>
+                    <div class="label">热门小区</div>
+                </div>
+                <div class="stat-card">
+                    <div class="num">10年</div>
+                    <div class="label">服务经验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="layout-grid">
+            <!-- Left Sidebar -->
+            <aside class="sidebar-left">
+                <div class="category-menu">
+                    <h3>区域找房</h3>
+                    <ul class="cat-list">
+                        <li class="cat-item"><span>鲤城街道</span> <span>(120)</span></li>
+                        <li class="cat-item"><span>凤麓街道</span> <span>(85)</span></li>
+                        <li class="cat-item"><span>榜头镇</span> <span>(210)</span></li>
+                        <li class="cat-item"><span>大济镇</span> <span>(45)</span></li>
+                        <li class="cat-item"><span>枫亭镇</span> <span>(60)</span></li>
+                        <li class="cat-item"><span>盖尾镇</span> <span>(32)</span></li>
+                        <li class="cat-item"><span>游洋镇</span> <span>(15)</span></li>
+                    </ul>
+                    <h3 style="margin-top: 25px;">价格区间</h3>
+                    <ul class="cat-list">
+                        <li class="cat-item"><span>50万以下</span></li>
+                        <li class="cat-item"><span>50-80万</span></li>
+                        <li class="cat-item"><span>80-120万</span></li>
+                        <li class="cat-item"><span>120-200万</span></li>
+                        <li class="cat-item"><span>200万以上</span></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <section class="content-area">
+                <div class="filter-bar">
+                    <div class="filter-group">
+                        <button class="filter-btn active">最新发布</button>
+                        <button class="filter-btn">价格从低到高</button>
+                        <button class="filter-btn">面积从大到小</button>
+                    </div>
+                    <div class="filter-group">
+                        <select style="padding: 6px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option>全部户型</option>
+                            <option>一室一厅</option>
+                            <option>二室一厅</option>
+                            <option>三室一厅</option>
+                            <option>四室及以上</option>
+                        </select>
+                        <select style="padding: 6px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option>不限楼层</option>
+                            <option>低楼层</option>
+                            <option>中层</option>
+                            <option>高楼层</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="house-list">
+                    <!-- House Card 1 -->
+                    <article class="house-card">
+                        <img src="https://picsum.photos/seed/fang1/400/300" alt="仙游某小区三室两厅" class="house-img">
+                        <div class="house-info">
+                            <div class="house-title-row">
+                                <h2 class="house-title">[鲤城] 鲤景湾三期 精装大三房 视野开阔</h2>
+                                <div class="house-tags">
+                                    <span class="tag new">急售</span>
+                                    <span class="tag recommend">满五唯一</span>
+                                </div>
+                            </div>
+                            <p class="house-desc">户型方正，南北通透，客厅带大阳台。装修保养极好，拎包入住。小区环境优美，出门即是公交站，生活便利。</p>
+                            <div class="house-price-row">
+                                <div class="price-group">
+                                    <h4>总价</h4>
+                                    <span class="price">128</span><span class="unit">万</span>
+                                </div>
+                                <div class="house-meta">
+                                    <p>112㎡ | 3室2厅 | 南北 | 高楼层(22/28)</p>
+                                    <p>发布时间：2023-10-24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- House Card 2 -->
+                    <article class="house-card">
+                        <img src="https://picsum.photos/seed/fang2/400/300" alt="仙游某学区房两室一厅" class="house-img">
+                        <div class="house-info">
+                            <div class="house-title-row">
+                                <h2 class="house-title">[榜头] 龙腾豪庭 学区房 紧邻实验小学</h2>
+                                <div class="house-tags">
+                                    <span class="tag new">新上</span>
+                                </div>
+                            </div>
+                            <p class="house-desc">核心学区房，步行至实验小学仅需5分钟。装修简约现代，采光极佳。适合有教育需求的刚需家庭。</p>
+                            <div class="house-price-row">
+                                <div class="price-group">
+                                    <h4>总价</h4>
+                                    <span class="price">89</span><span class="unit">万</span>
+                                </div>
+                                <div class="house-meta">
+                                    <p>88㎡ | 2室1厅 | 南 | 中楼层(12/24)</p>
+                                    <p>发布时间：2023-10-23</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- House Card 3 -->
+                    <article class="house-card">
+                        <img src="https://picsum.photos/seed/fang3/400/300" alt="仙游别墅房源" class="house-img">
+                        <div class="house-info">
+                            <div class="house-title-row">
+                                <h2 class="house-title">[枫亭] 滨海新城 联排别墅 送私家花园</h2>
+                                <div class="house-tags">
+                                    <span class="tag recommend">稀缺</span>
+                                </div>
+                            </div>
+                            <p class="house-desc">稀缺联排别墅，前后双花园，私家车库。独门独院，居住舒适度高。周边配套成熟，适合改善型置业。</p>
+                            <div class="house-price-row">
+                                <div class="price-group">
+                                    <h4>总价</h4>
+                                    <span class="price">280</span><span class="unit">万</span>
+                                </div>
+                                <div class="house-meta">
+                                    <p>320㎡ | 4室3厅 | 南北 | 低楼层(1/3)</p>
+                                    <p>发布时间：2023-10-22</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- House Card 4 -->
+                    <article class="house-card">
+                        <img src="https://picsum.photos/seed/fang4/400/300" alt="仙游出租房源" class="house-img">
+                        <div class="house-info">
+                            <div class="house-title-row">
+                                <h2 class="house-title">[凤麓] 城南新区 二室一厅 精装出租</h2>
+                                <div class="house-tags">
+                                    <span class="tag new">出租</span>
+                                </div>
+                            </div>
+                            <p class="house-desc">家电齐全，拎包入住。小区物业管理规范，24小时安保。适合上班族，距离市中心仅10分钟车程。</p>
+                            <div class="house-price-row">
+                                <div class="price-group">
+                                    <h4>租金</h4>
+                                    <span class="price">2,200</span><span class="unit">元/月</span>
+                                </div>
+                                <div class="house-meta">
+                                    <p>65㎡ | 2室1厅 | 南 | 中楼层</p>
+                                    <p>发布时间：2023-10-24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div style="text-align: center; margin-top: 20px;">
+                    <button style="padding: 10px 30px; background: white; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">加载更多房源</button>
+                </div>
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar-right">
+                <div class="guide-card">
+                    <h3>购房必读</h3>
+                    <ul class="guide-list">
+                        <li>
+                            <a href="#">仙游二手房交易流程详解</a>
+                            <span class="sub">step by step guide</span>
+                        </li>
+                        <li>
+                            <a href="#">如何查询个人房产信息</a>
+                            <span class="sub">官方查询渠道</span>
+                        </li>
+                        <li>
+                            <a href="#">仙游学区划分政策解读</a>
+                            <span class="sub">最新政策</span>
+                        </li>
+                        <li>
+                            <a href="#">二手房税费计算器</a>
+                            <span class="sub">省钱小妙招</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <h3>仙游楼市周报</h3>
+                    <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">本周均价：6,580元/㎡</div>
+                        <div style="font-size: 12px; color: #666;">环比上周 <span style="color: #52c41a;">↓ 0.5%</span></div>
+                    </div>
+                    <div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">成交量：452套</div>
+                        <div style="font-size: 12px; color: #666;">环比上周 <span style="color: #f5222d;">↑ 12%</span></div>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; margin-bottom: 5px;">挂牌均价：7,200元/㎡</div>
+                        <div style="font-size: 12px; color: #666;">市场活跃度提升</div>
+                    </div>
+                </div>
+
+                <div class="guide-card" style="background: #e6f7ff; border: 1px solid #91d5ff;">
+                    <h3 style="color: #0050b3;">免费看房预约</h3>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 15px;">专业置业顾问一对一服务，带您实地看房。</p>
+                    <button style="width: 100%; padding: 10px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer;">立即预约</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p style="font-size: 13px; line-height: 1.8; color: #bdc3c7;">
+                        仙游二手房网是仙游本地的专业房产信息服务平台，致力于为广大市民提供真实、准确、及时的二手房交易信息。我们拥有专业的团队，致力于优化您的购房体验。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">二手房出售</a></li>
+                        <li><a href="#">二手房出租</a></li>
+                        <li><a href="#">新房楼盘</a></li>
+                        <li><a href="#">小区房价</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务支持</h4>
+                    <ul>
+                        <li><a href="#">发布房源</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>电话：0594-8888XXXX</li>
+                        <li>邮箱：contact@xianyoufang.com</li>
+                        <li>地址：福建省莆田市仙游县鲤城街道</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 仙游二手房网 版权所有 | 闽ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
