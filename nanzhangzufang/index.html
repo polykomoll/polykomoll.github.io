@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="南漳租房官方首页，提供南漳本地真实房源信息，涵盖公寓、小区、合租等多种类型。包含租房攻略、区域分布、看房指南及安全保障服务，助您在南漳轻松找到理想居所。">
+    <meta name="keywords" content="南漳租房, 南漳房屋出租, 南漳公寓, 南漳小区, 南漳短租, 南漳找房子">
+    <title>南漳租房-本地真实房源与便捷租赁服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary-color: #f97316;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-outline {
+            border-color: var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 3rem 0;
+            color: white;
+        }
+
+        .hero-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+            display: flex;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-box select, .search-box input {
+            border: none;
+            outline: none;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .search-box select {
+            border-right: 1px solid var(--border-color);
+            background: #f8fafc;
+            color: var(--text-sub);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .search-box button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background-color: #ea580c;
+        }
+
+        /* Filters */
+        .filter-bar {
+            max-width: var(--container-width);
+            margin: 2rem auto 0;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 0.8rem;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .filter-tag {
+            padding: 0.4rem 1rem;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .filter-tag.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .sort-options select {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: white;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* Main Content Grid */
+        .main-container {
+            max-width: var(--container-width);
+            margin: 2rem auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Listing Cards */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 200px;
+            background-color: #e2e8f0;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .card-price {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .card-body {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-addr {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-features {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-top: auto;
+            padding-top: 0.8rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .ad-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .guide-list {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .guide-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-item:last-child {
+            border-bottom: none;
+        }
+
+        .guide-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-main);
+        }
+
+        .guide-desc {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 0 1rem;
+            }
+            .nav-menu {
+                display: none; /* Simplify for mobile */
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .search-box {
+                flex-direction: column;
+            }
+            .search-box select, .search-box input {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .search-box button {
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>南漳租房</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">整租</a>
+                <a href="#">合租</a>
+                <a href="#">小区</a>
+                <a href="#">商铺</a>
+            </nav>
+            <div class="user-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费发布</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>在南漳，找到理想的家</h1>
+            <p>海量真实房源，安全靠谱的租赁服务平台。覆盖南漳县城及周边热门区域，满足您对居住的所有想象。</p>
+            <form class="search-box" onsubmit="event.preventDefault();">
+                <select>
+                    <option value="all">全区域</option>
+                    <option value="jiedao">襄南大道</option>
+                    <option value="jiedao">荆山大道</option>
+                    <option value="jiedao">清河路</option>
+                    <option value="jiedao">水镜路</option>
+                </select>
+                <input type="text" placeholder="请输入小区名、街道或商圈...">
+                <button type="submit">搜索</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <div class="filter-tags">
+            <div class="filter-tag active">综合排序</div>
+            <div class="filter-tag">价格 <span>&darr;</span></div>
+            <div class="filter-tag">面积 <span>&darr;</span></div>
+            <div class="filter-tag">最新发布</div>
+            <div class="filter-tag">近地铁</div>
+        </div>
+        <div class="sort-options">
+            <select>
+                <option>默认排序</option>
+                <option>价格从低到高</option>
+                <option>价格从高到低</option>
+                <option>最新上线</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Listings -->
+        <section class="listings">
+            <div class="section-title">
+                <span>热门推荐</span>
+                <a href="#">查看更多 &rsaquo;</a>
+            </div>
+            
+            <div class="property-grid">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/nanzhang1/400/300" alt="南漳公寓房源" class="card-img">
+                        <span class="card-badge">个人房东</span>
+                        <span class="card-price">¥1200/月</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">南漳水镜路精装两室一厅 离市中心近 配家具家电</h3>
+                        <div class="card-addr">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            水镜路 附近
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-item">🏠 2室1厅</span>
+                            <span class="feature-item">🛏️ 60㎡</span>
+                            <span class="feature-item">🚿 独卫</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/nanzhang2/400/300" alt="南漳小区房源" class="card-img">
+                        <span class="card-badge">中介房源</span>
+                        <span class="card-price">¥1800/月</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">锦绣江山小区 环境优美 安全小区 适合居住</h3>
+                        <div class="card-addr">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            锦绣江山小区
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-item">🏠 3室2厅</span>
+                            <span class="feature-item">🛏️ 95㎡</span>
+                            <span class="feature-item">🚗 停车位</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/nanzhang3/400/300" alt="南漳合租房源" class="card-img">
+                        <span class="card-badge">合租</span>
+                        <span class="card-price">¥600/月</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">南漳职教中心附近 精致单间 合租室友素质高</h3>
+                        <div class="card-addr">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            襄南大道
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-item">🏠 1室1厅</span>
+                            <span class="feature-item">🛏️ 25㎡</span>
+                            <span class="feature-item">🧹 公用</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/nanzhang4/400/300" alt="南漳公寓房源" class="card-img">
+                        <span class="card-badge">个人房东</span>
+                        <span class="card-price">¥1500/月</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">东巩镇温馨公寓 老板娘人很好 家具齐全拎包入住</h3>
+                        <div class="card-addr">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            东巩镇
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-item">🏠 2室1厅</span>
+                            <span class="feature-item">🛏️ 70㎡</span>
+                            <span class="feature-item">📶 宽带</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/nanzhang5/400/300" alt="南漳小区房源" class="card-img">
+                        <span class="card-badge">中介房源</span>
+                        <span class="card-price">¥2200/月</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">城关镇黄金地段 临街商铺出租 商业价值高</h3>
+                        <div class="card-addr">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            城关镇
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-item">🏢 商铺</span>
+                            <span class="feature-item">🛏️ 120㎡</span>
+                            <span class="feature-item">🚿 卫生间</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/nanzhang6/400/300" alt="南漳合租房源" class="card-img">
+                        <span class="card-badge">合租</span>
+                        <span class="card-price">¥800/月</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">南漳大学城附近 两室一厅主卧出租 采光极佳</h3>
+                        <div class="card-addr">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            大学城
+                        </div>
+                        <div class="card-features">
+                            <span class="feature-item">🏠 1室1厅</span>
+                            <span class="feature-item">🛏️ 35㎡</span>
+                            <span class="feature-item">🚿 独卫</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Ad Space -->
+            <div class="ad-placeholder">
+                广告位招租
+            </div>
+
+            <!-- Guide Section -->
+            <div class="guide-list">
+                <div class="section-title" style="margin-bottom: 1rem;">租房指南</div>
+                
+                <div class="guide-item">
+                    <div class="guide-title">南漳租房防骗指南</div>
+                    <div class="guide-desc">如何识别虚假房源，保护个人信息安全。</div>
+                </div>
+                
+                <div class="guide-item">
+                    <div class="guide-title">合同签订注意事项</div>
+                    <div class="guide-desc">细看条款，明确押金退还及维修责任。</div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-title">南漳热门居住区推荐</div>
+                    <div class="guide-desc">水镜路、清河路等区域配套及房价分析。</div>
+                </div>
+
+                <div class="guide-item">
+                    <div class="guide-title">看房流程详解</div>
+                    <div class="guide-desc">实地考察时需要检查的细节清单。</div>
+                </div>
+            </div>
+
+            <!-- Download App -->
+            <div style="background: #eff6ff; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">下载手机APP</h4>
+                <p style="font-size: 0.85rem; color: var(--text-sub); margin-bottom: 1rem;">随时随地看房，消息实时推送</p>
+                <div style="display: flex; justify-content: center; gap: 0.5rem;">
+                    <button class="btn btn-outline" style="flex:1;">安卓下载</button>
+                    <button class="btn btn-outline" style="flex:1;">iOS下载</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>关于南漳租房</h4>
+                <ul>
+                    <li><a href="#">平台介绍</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">用户协议</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>服务支持</h4>
+                <ul>
+                    <li><a href="#">发布房源</a></li>
+                    <li><a href="#">会员服务</a></li>
+                    <li><a href="#">商家入驻</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>热门区域</h4>
+                <ul>
+                    <li><a href="#">城关镇租房</a></li>
+                    <li><a href="#">东巩租房</a></li>
+                    <li><a href="#">武安租房</a></li>
+                    <li><a href="#">九集镇租房</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系方式</h4>
+                <ul>
+                    <li>客服热线：0710-1234567</li>
+                    <li>工作时间：8:30 - 18:00</li>
+                    <li>电子邮箱：support@nanzhang.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 南漳租房服务平台 版权所有</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
