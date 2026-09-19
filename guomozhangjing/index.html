@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="国模张静文官方网站，提供张静文个人写真、平面模特作品、时尚摄影展示及模特行业资讯。">
+    <meta name="keywords" content="国模张静文,张静文写真,平面模特,国模,时尚摄影,模特作品">
+    <title>国模张静文-个人写真作品与时尚摄影展示平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #d4af37;
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/modelhero/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 1.5rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-img-wrapper {
+            position: relative;
+            padding-top: 133%; /* 3:4 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .gallery-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .tags {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: #f0f0f0;
+            color: var(--text-light);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .profile-list {
+            margin-top: 2rem;
+        }
+
+        .profile-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-list li strong {
+            width: 80px;
+            color: var(--primary-color);
+        }
+
+        /* Services/Style */
+        .style-section {
+            background-color: #f4f4f4;
+        }
+
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .style-card {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .style-card:hover {
+            background-color: var(--accent-color);
+        }
+
+        .style-card:hover h4, .style-card:hover p, .style-card:hover .style-icon {
+            color: var(--white);
+        }
+
+        .style-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .style-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .style-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .style-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* Simplified mobile nav for demo */
+            .hero { height: 500px; }
+            .hero h1 { font-size: 2.2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .style-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">国模<span>张静文</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#gallery">写真作品</a></li>
+                    <li><a href="#about">个人简介</a></li>
+                    <li><a href="#style">拍摄风格</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-btn">商务合作</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>发现国模张静文的独特魅力</h1>
+                <p>专注于高品质平面摄影与时尚造型，展现当代女性的自信与优雅。探索她的最新写真作品与拍摄风格。</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#gallery" class="cta-btn" style="background-color: var(--white); color: var(--primary-color);">浏览作品</a>
+                    <a href="#about" class="cta-btn" style="border: 1px solid var(--white);">了解更多</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>拍摄案例</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3年</h3>
+                        <p>行业经验</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>合作品牌</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery">
+            <div class="container">
+                <div class="section-header">
+                    <h2>精选写真作品</h2>
+                    <p>涵盖时尚、人像、商业摄影等多种风格，记录每一个精彩瞬间。</p>
+                </div>
+                <div class="gallery-grid">
+                    <!-- Gallery Item 1 -->
+                    <article class="gallery-item">
+                        <div class="gallery-img-wrapper">
+                            <img src="https://picsum.photos/seed/model1/400/533" alt="国模张静文时尚写真">
+                        </div>
+                        <div class="gallery-info">
+                            <h3>都市霓虹系列</h3>
+                            <p>捕捉城市夜景下的光影交错，展现摩登女性的独立与冷艳。</p>
+                            <div class="tags">
+                                <span class="tag">时尚</span>
+                                <span class="tag">夜景</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gallery Item 2 -->
+                    <article class="gallery-item">
+                        <div class="gallery-img-wrapper">
+                            <img src="https://picsum.photos/seed/model2/400/533" alt="国模张静文清新人像">
+                        </div>
+                        <div class="gallery-info">
+                            <h3>春日森系</h3>
+                            <p>自然光下的清新风格，强调肌肤质感与自然的呼吸感。</p>
+                            <div class="tags">
+                                <span class="tag">森系</span>
+                                <span class="tag">人像</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gallery Item 3 -->
+                    <article class="gallery-item">
+                        <div class="gallery-img-wrapper">
+                            <img src="https://picsum.photos/seed/model3/400/533" alt="国模张静文高级定制">
+                        </div>
+                        <div class="gallery-info">
+                            <h3>高定礼服展示</h3>
+                            <p>为高端时装周拍摄，完美演绎奢华礼服的剪裁与设计。</p>
+                            <div class="tags">
+                                <span class="tag">礼服</span>
+                                <span class="tag">高级定制</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gallery Item 4 -->
+                    <article class="gallery-item">
+                        <div class="gallery-img-wrapper">
+                            <img src="https://picsum.photos/seed/model4/400/533" alt="国模张静文黑白摄影">
+                        </div>
+                        <div class="gallery-info">
+                            <h3>黑白光影</h3>
+                            <p>极简主义风格的黑白摄影，突出人物面部表情与情绪。</p>
+                            <div class="tags">
+                                <span class="tag">黑白</span>
+                                <span class="tag">情绪片</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gallery Item 5 -->
+                    <article class="gallery-item">
+                        <div class="gallery-img-wrapper">
+                            <img src="https://picsum.photos/seed/model5/400/533" alt="国模张静文商务风">
+                        </div>
+                        <div class="gallery-info">
+                            <h3>职场精英</h3>
+                            <p>干练的职业装造型，展现职场女性的专业与知性。</p>
+                            <div class="tags">
+                                <span class="tag">职业装</span>
+                                <span class="tag">知性</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Gallery Item 6 -->
+                    <article class="gallery-item">
+                        <div class="gallery-img-wrapper">
+                            <img src="https://picsum.photos/seed/model6/400/533" alt="国模张静文复古风">
+                        </div>
+                        <div class="gallery-info">
+                            <h3>复古胶片</h3>
+                            <p>怀旧色调的胶片感拍摄，重温旧时光的浪漫与韵味。</p>
+                            <div class="tags">
+                                <span class="tag">复古</span>
+                                <span class="tag">胶片</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://picsum.photos/seed/aboutmodel/600/700" alt="国模张静文个人形象照">
+                    </div>
+                    <div class="about-text">
+                        <h3>关于国模张静文</h3>
+                        <p>国模张静文是一位活跃于国内时尚圈的平面模特。她以独特的气质和出色的镜头表现力著称，能够驾驭多种不同的拍摄风格，从清新的自然风到高级的时尚大片，都能精准传达摄影师的创作意图。</p>
+                        <p>她注重细节，在拍摄过程中能够快速理解造型师的搭配思路，并与化妆师紧密配合，呈现出最完美的妆面效果。多年的行业积累让她在镜头前游刃有余，成为众多品牌和摄影师青睐的合作对象。</p>
+                        
+                        <ul class="profile-list">
+                            <li><strong>身高：</strong>172cm</li>
+                            <li><strong>三围：</strong>84-60-90</li>
+                            <li><strong>鞋码：</strong>38</li>
+                            <li><strong>籍贯：</strong>中国</li>
+                            <li><strong>特长：</strong>平面拍摄、T台走秀</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Style/Services Section -->
+        <section id="style" class="style-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>拍摄风格与服务</h2>
+                    <p>多元化的视觉表达，满足不同商业需求与艺术追求。</p>
+                </div>
+                <div class="style-grid">
+                    <div class="style-card">
+                        <div class="style-icon">✦</div>
+                        <h4>时尚大片</h4>
+                        <p>为杂志、品牌画册提供高品质视觉大片，提升品牌调性。</p>
+                    </div>
+                    <div class="style-card">
+                        <div class="style-icon">◈</div>
+                        <h4>商业广告</h4>
+                        <p>配合产品特性进行创意拍摄，精准传达产品卖点。</p>
+                    </div>
+                    <div class="style-card">
+                        <div class="style-icon">❋</div>
+                        <h4>个人写真</h4>
+                        <p>记录美好瞬间，打造专属个人形象展示。</p>
+                    </div>
+                    <div class="style-card">
+                        <div class="style-icon">❖</div>
+                        <h4>婚纱礼服</h4>
+                        <p>优雅诠释婚纱魅力，打造梦幻般的婚礼视觉。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact/CTA Section -->
+        <section id="contact" style="background-color: var(--white);">
+            <div class="container" style="text-align: center; max-width: 800px;">
+                <div class="section-header">
+                    <h2>开启合作之旅</h2>
+                    <p>无论是商业拍摄还是个人约拍，欢迎随时联系咨询。</p>
+                </div>
+                <div style="background-color: #f4f4f4; padding: 3rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1.5rem;">商务合作 / 模特约拍 / 媒体采访</p>
+                    <a href="mailto:contact@zhangjingwen.com" class="cta-btn" style="padding: 1rem 3rem; font-size: 1.1rem;">发送邮件咨询</a>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-light);">我们尊重每一位创作者，请通过邮件进行正规商务沟通。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>国模张静文</h2>
+                    <p>致力于提供专业的平面模特服务，用镜头讲述独特的故事。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#gallery">作品集</a></li>
+                        <li><a href="#about">个人简介</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>拍摄风格</h4>
+                    <ul>
+                        <li><a href="#">时尚大片</a></li>
+                        <li><a href="#">商业广告</a></li>
+                        <li><a href="#">婚纱礼服</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li><a href="mailto:contact@zhangjingwen.com">contact@zhangjingwen.com</a></li>
+                        <li>上海 · 中国</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 国模张静文工作室 版权所有. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                  </html>
